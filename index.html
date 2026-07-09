@@ -31,7 +31,7 @@
     font-size:17px;line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,.display{font-family:"Marcellus",serif;font-weight:400;color:#fff}
+  h1,h2,.display{font-family:"Marcellus",serif;font-weight:400;color:#fff;text-wrap:balance}
   a{color:var(--oro-palido)}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
@@ -40,11 +40,11 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
   .brand span{font-family:"Marcellus",serif;font-size:1.35rem;color:var(--oro);letter-spacing:.02em}
-  .nav-cta{font-size:.95rem;text-decoration:none;color:var(--oro-palido);border:1px solid rgba(201,164,92,.45);padding:8px 18px;border-radius:999px;transition:background .2s,color .2s}
+  .nav-cta{font-size:.95rem;text-decoration:none;color:var(--oro-palido);border:1px solid rgba(201,164,92,.45);padding:10px 20px;border-radius:999px;transition:background .2s,color .2s;touch-action:manipulation}
   .nav-cta:hover{background:var(--oro);color:var(--tinta)}
 
   /* ---- Hero ---- */
-  header.hero{padding:64px 0 88px}
+  header.hero{padding-block:64px 88px}
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
   .eyebrow{
     display:inline-block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
@@ -56,6 +56,7 @@
   .hero p.lead{font-size:1.15rem;max-width:32em;margin-bottom:32px}
   .cta{
     display:inline-block;background:var(--oro);color:var(--tinta);text-decoration:none;
+    touch-action:manipulation;
     font-weight:700;font-size:1.05rem;padding:15px 34px;border-radius:999px;
     transition:transform .15s ease,box-shadow .15s ease;
   }
@@ -86,7 +87,7 @@
     flex:none;width:36px;height:36px;border-radius:50%;background:var(--tinta);color:var(--oro-palido);
     font-family:"Marcellus",serif;font-size:1rem;display:flex;align-items:center;justify-content:center;
   }
-  .vacante h3{font-size:.98rem;font-weight:700;color:var(--tinta-texto)}
+  .vacante .rol{font-size:.98rem;font-weight:700;color:var(--tinta-texto);margin:0}
   .vacante p{font-size:.85rem;color:#5d6a82}
   .tray-foot{display:flex;gap:16px;padding-top:14px;font-size:.83rem;color:#5d6a82}
   .tray-foot b{color:#8a7a55}
@@ -103,7 +104,7 @@
   .menu-item .detalle{color:var(--niebla);font-size:.98rem;max-width:24em;text-align:right}
 
   /* ---- Cómo funciona ---- */
-  section.pasos{padding:84px 0}
+  section.pasos{padding-block:84px}
   .pasos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
   .paso .num{
     font-family:"Marcellus",serif;color:var(--oro);font-size:1.05rem;
@@ -133,6 +134,7 @@
     .tray-card{margin:0 auto}
     .pasos-grid{grid-template-columns:1fr}
     .menu-item{flex-direction:column;gap:4px}
+    .menu-item .nombre{white-space:normal}
     .menu-item .puntos{display:none}
     .menu-item .detalle{text-align:left;max-width:none}
     .menu-item{border-bottom:1px dotted rgba(201,164,92,.35);padding:14px 0}
@@ -168,15 +170,15 @@
         </div>
         <div class="vacante">
           <div class="fit">10</div>
-          <div><h3>Contador Sr. — Zapopan</h3><p>En tu ciudad · sueldo dentro de tu rango</p></div>
+          <div><p class="rol">Contador Sr. — Zapopan</p><p>En tu ciudad · sueldo dentro de tu rango</p></div>
         </div>
         <div class="vacante">
           <div class="fit">9</div>
-          <div><h3>Contador Independiente — Remoto</h3><p>100% remoto · empata con tu experiencia</p></div>
+          <div><p class="rol">Contador Independiente — Remoto</p><p>100% remoto · empata con tu experiencia</p></div>
         </div>
         <div class="vacante">
           <div class="fit">8</div>
-          <div><h3>Analista Contable — Guadalajara</h3><p>Híbrido · industria de tu interés</p></div>
+          <div><p class="rol">Analista Contable — Guadalajara</p><p>Híbrido · industria de tu interés</p></div>
         </div>
         <div class="tray-foot">
           <span><b>✓</b> CV optimizado</span>
