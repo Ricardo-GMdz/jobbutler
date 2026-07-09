@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobButler — Tu mayordomo de búsqueda de empleo</title>
+<meta name="description" content="JobButler es un servicio de membresía de búsqueda de empleo en México. Cada lunes recibes vacantes seleccionadas para tu perfil, tu CV optimizado para filtros ATS y mensajes listos para enviar. $799 MXN al mes.">
+<meta property="og:title" content="JobButler — Tu mayordomo de búsqueda de empleo">
+<meta property="og:description" content="Cada lunes: vacantes rankeadas para tu perfil, CV optimizado y mensajes listos. Primera lista en 48 horas.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316233B'/%3E%3Cpath d='M14 22 L28 30 L28 34 L14 42 Z M50 22 L36 30 L36 34 L50 42 Z' fill='%23C9A45C'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23C9A45C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tinta:#16233B;
+    --medianoche:#0F1829;
+    --marfil:#F7F3EA;
+    --oro:#C9A45C;
+    --oro-palido:#E3CD9A;
+    --niebla:#B9C2D4;
+    --tinta-texto:#1C2A44;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--tinta);
+    color:var(--niebla);
+    font-family:"Alegreya Sans",system-ui,sans-serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,.display{font-family:"Marcellus",serif;font-weight:400;color:#fff}
+  a{color:var(--oro-palido)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---- Nav ---- */
+  nav{padding:22px 0}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand span{font-family:"Marcellus",serif;font-size:1.35rem;color:var(--oro);letter-spacing:.02em}
+  .nav-cta{font-size:.95rem;text-decoration:none;color:var(--oro-palido);border:1px solid rgba(201,164,92,.45);padding:8px 18px;border-radius:999px;transition:background .2s,color .2s}
+  .nav-cta:hover{background:var(--oro);color:var(--tinta)}
+
+  /* ---- Hero ---- */
+  header.hero{padding:64px 0 88px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--oro);margin-bottom:20px;
+  }
+  .eyebrow::after{content:"";display:inline-block;width:44px;height:1px;background:var(--oro);margin-left:14px;vertical-align:middle;opacity:.6}
+  h1{font-size:clamp(2.2rem,4.6vw,3.4rem);line-height:1.12;margin-bottom:20px}
+  h1 em{font-style:normal;color:var(--oro)}
+  .hero p.lead{font-size:1.15rem;max-width:32em;margin-bottom:32px}
+  .cta{
+    display:inline-block;background:var(--oro);color:var(--tinta);text-decoration:none;
+    font-weight:700;font-size:1.05rem;padding:15px 34px;border-radius:999px;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,164,92,.28)}
+  .cta:focus-visible,a:focus-visible{outline:2px solid var(--oro-palido);outline-offset:3px}
+  .cta-note{display:block;margin-top:14px;font-size:.92rem;color:var(--niebla);opacity:.85}
+
+  /* ---- La charola del lunes (signature) ---- */
+  .charola{position:relative}
+  .tray-card{
+    background:var(--marfil);color:var(--tinta-texto);border-radius:6px;
+    padding:28px 28px 22px;max-width:400px;margin-left:auto;
+    box-shadow:0 24px 60px rgba(0,0,0,.45);
+    border-top:4px solid var(--oro);
+    animation:servir .7s ease-out both;
+  }
+  @keyframes servir{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){
+    .tray-card{animation:none}
+    .cta{transition:none}
+    html{scroll-behavior:auto}
+  }
+  .tray-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(28,42,68,.15);padding-bottom:12px;margin-bottom:14px}
+  .tray-head strong{font-family:"Marcellus",serif;font-size:1.02rem;letter-spacing:.04em}
+  .tray-head small{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#8a7a55}
+  .vacante{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed rgba(28,42,68,.14)}
+  .fit{
+    flex:none;width:36px;height:36px;border-radius:50%;background:var(--tinta);color:var(--oro-palido);
+    font-family:"Marcellus",serif;font-size:1rem;display:flex;align-items:center;justify-content:center;
+  }
+  .vacante h3{font-size:.98rem;font-weight:700;color:var(--tinta-texto)}
+  .vacante p{font-size:.85rem;color:#5d6a82}
+  .tray-foot{display:flex;gap:16px;padding-top:14px;font-size:.83rem;color:#5d6a82}
+  .tray-foot b{color:#8a7a55}
+
+  /* ---- Menú de servicio ---- */
+  section.menu{background:var(--medianoche);padding:84px 0}
+  .section-eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);display:block;margin-bottom:14px}
+  h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:8px}
+  .menu-sub{margin-bottom:44px;max-width:36em}
+  .menu-list{max-width:760px}
+  .menu-item{display:flex;align-items:baseline;gap:12px;padding:10px 0}
+  .menu-item .nombre{font-family:"Marcellus",serif;color:#fff;font-size:1.15rem;white-space:nowrap}
+  .menu-item .puntos{flex:1;border-bottom:1px dotted rgba(201,164,92,.5);transform:translateY(-6px)}
+  .menu-item .detalle{color:var(--niebla);font-size:.98rem;max-width:24em;text-align:right}
+
+  /* ---- Cómo funciona ---- */
+  section.pasos{padding:84px 0}
+  .pasos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
+  .paso .num{
+    font-family:"Marcellus",serif;color:var(--oro);font-size:1.05rem;
+    border:1px solid rgba(201,164,92,.5);width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .paso h3{font-family:"Marcellus",serif;font-weight:400;color:#fff;font-size:1.2rem;margin-bottom:8px}
+  .paso p{font-size:.98rem}
+
+  /* ---- Precio ---- */
+  section.precio{background:var(--medianoche);padding:84px 0;text-align:center}
+  .precio-card{max-width:460px;margin:0 auto}
+  .monto{font-family:"Marcellus",serif;color:#fff;font-size:3.2rem;margin:18px 0 4px}
+  .monto small{font-size:1.1rem;color:var(--niebla)}
+  .precio ul{list-style:none;margin:26px 0 34px;text-align:left;display:inline-block}
+  .precio li{padding:6px 0 6px 30px;position:relative}
+  .precio li::before{content:"—";color:var(--oro);position:absolute;left:0}
+  .fine{font-size:.88rem;opacity:.75;margin-top:16px}
+
+  /* ---- Footer ---- */
+  footer{padding:48px 0;border-top:1px solid rgba(201,164,92,.18)}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  footer p{font-size:.9rem;opacity:.8}
+
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr;gap:44px}
+    .tray-card{margin:0 auto}
+    .pasos-grid{grid-template-columns:1fr}
+    .menu-item{flex-direction:column;gap:4px}
+    .menu-item .puntos{display:none}
+    .menu-item .detalle{text-align:left;max-width:none}
+    .menu-item{border-bottom:1px dotted rgba(201,164,92,.35);padding:14px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav class="wrap">
+  <div class="nav-inner">
+    <a class="brand" href="#" aria-label="JobButler inicio">
+      <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 20 L28 29 L28 35 L10 44 Z M54 20 L36 29 L36 35 L54 44 Z" fill="#C9A45C"/><circle cx="32" cy="32" r="5" fill="#C9A45C"/></svg>
+      <span>JobButler</span>
+    </a>
+    <a class="nav-cta" href="https://tally.so/r/gDr8YO">Únete</a>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Membresía de búsqueda de empleo · México</span>
+      <h1>Tu <em>mayordomo</em> de búsqueda de empleo.</h1>
+      <p class="lead">Deja de perseguir vacantes. Cada lunes te servimos las mejores oportunidades para tu perfil — con tu CV optimizado y mensajes listos para enviar.</p>
+      <a class="cta" href="https://tally.so/r/gDr8YO">Quiero mi primera lista</a>
+      <span class="cta-note">Tu primera lista llega en 48 horas. Cancela cuando quieras.</span>
+    </div>
+    <div class="charola">
+      <div class="tray-card" role="img" aria-label="Ejemplo del paquete semanal de JobButler: tres vacantes con puntaje de compatibilidad, CV optimizado y mensajes listos">
+        <div class="tray-head">
+          <strong>Tu semana, servida</strong>
+          <small>Lunes</small>
+        </div>
+        <div class="vacante">
+          <div class="fit">10</div>
+          <div><h3>Contador Sr. — Zapopan</h3><p>En tu ciudad · sueldo dentro de tu rango</p></div>
+        </div>
+        <div class="vacante">
+          <div class="fit">9</div>
+          <div><h3>Contador Independiente — Remoto</h3><p>100% remoto · empata con tu experiencia</p></div>
+        </div>
+        <div class="vacante">
+          <div class="fit">8</div>
+          <div><h3>Analista Contable — Guadalajara</h3><p>Híbrido · industria de tu interés</p></div>
+        </div>
+        <div class="tray-foot">
+          <span><b>✓</b> CV optimizado</span>
+          <span><b>✓</b> 2 mensajes listos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="menu">
+  <div class="wrap">
+    <span class="section-eyebrow">El servicio</span>
+    <h2>Cada lunes, servido.</h2>
+    <p class="menu-sub">Un equipo de personas + IA trabaja tu búsqueda toda la semana. Tú solo revisas tu tablero y aplicas.</p>
+    <div class="menu-list">
+      <div class="menu-item">
+        <span class="nombre">Vacantes rankeadas</span><span class="puntos"></span>
+        <span class="detalle">Puntaje de compatibilidad 1–10 calculado contra tu perfil real</span>
+      </div>
+      <div class="menu-item">
+        <span class="nombre">Top 10 para aplicar hoy</span><span class="puntos"></span>
+        <span class="detalle">Filtradas por tu salario mínimo, tu ciudad y tu modalidad</span>
+      </div>
+      <div class="menu-item">
+        <span class="nombre">CV optimizado</span><span class="puntos"></span>
+        <span class="detalle">Ajustado para pasar los filtros ATS de tus mejores vacantes — sin inventar nada</span>
+      </div>
+      <div class="menu-item">
+        <span class="nombre">Mensajes de contacto</span><span class="puntos"></span>
+        <span class="detalle">Redactados para cada vacante, listos para enviar a reclutadores</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pasos wrap">
+  <span class="section-eyebrow">Cómo funciona</span>
+  <h2>Tres pasos y estás dentro.</h2>
+  <div class="pasos-grid">
+    <div class="paso">
+      <div class="num">1</div>
+      <h3>Cuéntanos de ti</h3>
+      <p>Únete y responde nuestro cuestionario: qué buscas, dónde, tu salario mínimo y tu CV actual. Toma 10 minutos.</p>
+    </div>
+    <div class="paso">
+      <div class="num">2</div>
+      <h3>Recibe tu primera lista</h3>
+      <p>En 48 horas tienes tu primer paquete: vacantes reales, rankeadas y filtradas para ti.</p>
+    </div>
+    <div class="paso">
+      <div class="num">3</div>
+      <h3>Cada lunes, tu paquete</h3>
+      <p>Tu tablero personal se actualiza cada semana con vacantes frescas, CVs y mensajes. Tú aplicas y avanzas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="precio">
+  <div class="wrap precio-card">
+    <span class="section-eyebrow">Membresía</span>
+    <h2>Un precio. Todo incluido.</h2>
+    <div class="monto">$799 <small>MXN / mes</small></div>
+    <ul>
+      <li>Paquete semanal completo, cada lunes</li>
+      <li>Tablero personal con historial de tu búsqueda</li>
+      <li>Soporte directo por WhatsApp</li>
+      <li>Sin plazos forzosos — cancela cuando quieras</li>
+    </ul>
+    <br>
+    <a class="cta" href="https://tally.so/r/gDr8YO">Empezar hoy</a>
+    <p class="fine">¿Dudas antes de unirte? Escríbenos: <a href="mailto:noe.ricardofacpya@gmail.com">noe.ricardofacpya@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <a class="brand" href="#" aria-label="JobButler">
+      <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 20 L28 29 L28 35 L10 44 Z M54 20 L36 29 L36 35 L54 44 Z" fill="#C9A45C"/><circle cx="32" cy="32" r="5" fill="#C9A45C"/></svg>
+      <span>JobButler</span>
+    </a>
+    <p>Hecho en México 🇲🇽 · JobButler © 2026 · Servicio operado por personas + IA</p>
+  </div>
+</footer>
+
+</body>
+</html>
