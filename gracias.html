@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Bienvenido a JobButler! · Pago confirmado</title>
+<meta name="description" content="Tu membresía JobButler está activa. Esto es lo que sigue.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://jobbutler.com.mx/gracias">
+<meta name="theme-color" content="#16233B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316233B'/%3E%3Cpath d='M14 22 L28 30 L28 34 L14 42 Z M50 22 L36 30 L36 34 L50 42 Z' fill='%23C9A45C'/%3E%3Ccircle cx='32' cy='32' r='4.5' fill='%23C9A45C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<!-- ============ Analytics JobButler ============ -->
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FFX7Y2XMXC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FFX7Y2XMXC');
+</script>
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1010331998433627');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1010331998433627&ev=PageView&noscript=1"/></noscript>
+<!-- Conversión: purchase — solo si venimos de un pago real de Stripe -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var params = new URLSearchParams(window.location.search);
+    var sessionId = params.get('session_id');
+    // Stripe adjunta ?session_id=cs_... al redirigir tras el pago.
+    // Sin ese parámetro (visita directa) NO contamos conversión.
+    if (sessionId && sessionId.indexOf('cs_') === 0) {
+      if (window.gtag) gtag('event', 'purchase', {
+        transaction_id: sessionId,
+        currency: 'MXN',
+        value: 799,
+        items: [{ item_name: 'Membresia JobButler', price: 799, quantity: 1 }]
+      });
+      // eventID = session_id → deduplica con la API de Conversiones (fase futura)
+      if (window.fbq) fbq('track', 'Purchase',
+        { currency: 'MXN', value: 799 },
+        { eventID: sessionId });
+    }
+  });
+</script>
+<!-- ============ /Analytics JobButler ============ -->
+<style>
+  :root{
+    --tinta:#16233B; --medianoche:#0F1829; --marfil:#F7F3EA;
+    --oro:#C9A45C; --oro-palido:#E3CD9A; --niebla:#B9C2D4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--tinta); color:var(--niebla);
+    font-family:"Alegreya Sans",system-ui,sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    min-height:100vh; display:flex; flex-direction:column;
+  }
+  h1{font-family:"Marcellus",serif;font-weight:400;color:#fff;text-wrap:balance}
+  a{color:var(--oro-palido)}
+  .wrap{max-width:640px;margin:0 auto;padding:0 24px;width:100%}
+  nav{padding:22px 0}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand span{font-family:"Marcellus",serif;font-size:1.35rem;color:var(--oro);letter-spacing:.02em}
+  main{flex:1;display:flex;align-items:center;padding-block:48px 72px}
+  .card{
+    background:var(--medianoche);border:1px solid rgba(201,164,92,.22);
+    border-top:4px solid var(--oro);border-radius:8px;
+    padding:44px 40px;text-align:center;width:100%;
+    box-shadow:0 24px 60px rgba(0,0,0,.4);
+    animation:servir .6s ease-out both;
+  }
+  @keyframes servir{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.card{animation:none}}
+  .seal{
+    width:72px;height:72px;border-radius:50%;margin:0 auto 24px;
+    background:rgba(201,164,92,.12);border:1px solid rgba(201,164,92,.4);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .eyebrow{
+    display:inline-block;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--oro);margin-bottom:14px;
+  }
+  h1{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.14;margin-bottom:16px}
+  h1 em{font-style:normal;color:var(--oro)}
+  .lead{font-size:1.12rem;max-width:34em;margin:0 auto 32px}
+  .pasos{text-align:left;max-width:420px;margin:0 auto 32px;list-style:none;counter-reset:p}
+  .pasos li{
+    position:relative;padding:12px 0 12px 46px;counter-increment:p;
+    border-bottom:1px dashed rgba(201,164,92,.2);
+  }
+  .pasos li:last-child{border-bottom:0}
+  .pasos li::before{
+    content:counter(p);position:absolute;left:0;top:11px;
+    width:30px;height:30px;border-radius:50%;
+    border:1px solid rgba(201,164,92,.5);color:var(--oro);
+    font-family:"Marcellus",serif;font-size:.95rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .pasos b{color:#fff;font-weight:700}
+  .contacto{font-size:.95rem;opacity:.85;margin-top:8px}
+  footer{padding:36px 0;border-top:1px solid rgba(201,164,92,.16);text-align:center}
+  footer p{font-size:.88rem;opacity:.75}
+</style>
+</head>
+<body>
+
+<nav class="wrap">
+  <a class="brand" href="/" aria-label="JobButler inicio">
+    <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 20 L28 29 L28 35 L10 44 Z M54 20 L36 29 L36 35 L54 44 Z" fill="#C9A45C"/><circle cx="32" cy="32" r="5" fill="#C9A45C"/></svg>
+    <span>JobButler</span>
+  </a>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="card">
+      <div class="seal" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C9A45C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 L9 17 L4 12"/></svg>
+      </div>
+      <span class="eyebrow">Pago confirmado</span>
+      <h1>¡Listo! Ya eres <em>miembro</em> de JobButler.</h1>
+      <p class="lead">Gracias por unirte. A partir de ahora tu búsqueda de empleo la trabajamos nosotros — personas + IA, cada semana.</p>
+      <ol class="pasos">
+        <li><b>Revisa tu correo.</b> Te llega el recibo de Stripe y, en las próximas horas, el cuestionario de onboarding.</li>
+        <li><b>Cuéntanos de ti (10 min).</b> Qué buscas, dónde, tu salario mínimo y tu CV actual.</li>
+        <li><b>Tu primera lista, en 48 horas.</b> Vacantes rankeadas para tu perfil, con CV optimizado y mensajes listos.</li>
+      </ol>
+      <p class="contacto">¿Dudas? Escríbenos a <a href="mailto:hola@jobbutler.com.mx">hola@jobbutler.com.mx</a></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Hecho en México 🇲🇽 · JobButler © 2026 · <a href="/">jobbutler.com.mx</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
