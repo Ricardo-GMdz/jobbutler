@@ -52,6 +52,12 @@
         { currency: 'MXN', value: 799 },
         { eventID: sessionId });
     }
+    // Higiene: una vez usado, quitar session_id de la URL para que no quede en el
+    // historial ni viaje en hits posteriores. (El embed de Tally corre al parsear el
+    // body — antes de DOMContentLoaded — así que ya lo capturó.)
+    if (sessionId && window.history && history.replaceState) {
+      history.replaceState(null, '', window.location.pathname);
+    }
   });
 </script>
 <!-- ============ /Analytics JobButler ============ -->
@@ -133,10 +139,62 @@
       <h1>¡Listo! Ya eres <em>miembro</em> de JobButler.</h1>
       <p class="lead">Gracias por unirte. A partir de ahora tu búsqueda de empleo la trabajamos nosotros — personas + IA, cada semana.</p>
       <ol class="pasos">
-        <li><b>Revisa tu correo.</b> Te llega el recibo de Stripe y, en las próximas horas, el cuestionario de onboarding.</li>
         <li><b>Cuéntanos de ti (10 min).</b> Qué buscas, dónde, tu salario mínimo y tu CV actual.</li>
+        <li><b>Revisa tu correo.</b> Te llega el recibo de Stripe y la confirmación de tu alta.</li>
         <li><b>Tu primera lista, en 48 horas.</b> Vacantes rankeadas para tu perfil, con CV optimizado y mensajes listos.</li>
       </ol>
+
+      <!-- TALLY-FORM-EMBED-START -->
+      <!-- Cuestionario de onboarding. Para activarlo (ver docs/guia-tally-onboarding.md):
+           reemplaza el valor 'TALLY_FORM_ID' de la línea `var FORM_ID` por el id real del form
+           de Tally (el <ID> de https://tally.so/r/<ID>). Eso es TODO el cambio.
+           El script inyecta ?session_id= (que Stripe deja en la URL) como campo oculto para
+           amarrar cada respuesta con su pago. Mientras siga en 'TALLY_FORM_ID', se muestra el
+           aviso interino de "te lo enviamos por correo" y no se carga ningún iframe. -->
+      <div id="onboarding" style="margin:4px auto 8px">
+        <p id="tally-fallback" class="contacto">
+          Estamos preparando tu cuestionario de onboarding —
+          <b>te lo enviamos por correo en las próximas horas</b>.
+        </p>
+      </div>
+      <script>
+        (function () {
+          var FORM_ID = 'gDr8YO'; // Onboarding — Membresía JobButler (tally.so/r/gDr8YO)
+          if (FORM_ID === 'TALLY_FORM_ID') return; // aún en placeholder: se deja el aviso por correo
+          var sid = new URLSearchParams(window.location.search).get('session_id') || '';
+          if (sid.indexOf('cs_') !== 0) sid = ''; // solo ids reales de Stripe Checkout (cs_...)
+          // Sin transparentBackground: el form pinta su fondo blanco siempre.
+          // (Con transparencia, Chrome bloquea iframes claros sobre página oscura
+          // por mismatch de color-scheme y pinta un fondo opaco — form invisible.)
+          var src = 'https://tally.so/embed/' + FORM_ID +
+            '?alignLeft=1&hideTitle=1&dynamicHeight=1' +
+            (sid ? '&session_id=' + encodeURIComponent(sid) : '');
+          // createElement + setAttribute (nunca innerHTML con datos de la URL): sin riesgo XSS
+          var host = document.getElementById('onboarding');
+          host.textContent = '';
+          // Fondo marfil: el form de Tally usa texto oscuro (transparentBackground=1),
+          // sin esto sería invisible sobre la tarjeta azul marino.
+          host.style.background = '#F7F3EA';
+          host.style.borderRadius = '14px';
+          host.style.padding = '22px 18px';
+          host.style.textAlign = 'left';
+          var frame = document.createElement('iframe');
+          frame.setAttribute('data-tally-src', src);
+          frame.setAttribute('loading', 'lazy');
+          frame.setAttribute('width', '100%');
+          frame.setAttribute('height', '500');
+          frame.setAttribute('frameborder', '0');
+          frame.setAttribute('title', 'Onboarding JobButler');
+          frame.style.colorScheme = 'light'; // evita el mismatch dark/light de Chrome
+          frame.style.borderRadius = '8px';
+          host.appendChild(frame);
+          var s = document.createElement('script');
+          s.src = 'https://tally.so/widgets/embed.js';
+          document.body.appendChild(s);
+        })();
+      </script>
+      <!-- TALLY-FORM-EMBED-END -->
+
       <p class="contacto">¿Dudas? Escríbenos a <a href="mailto:hola@jobbutler.com.mx">hola@jobbutler.com.mx</a></p>
     </div>
   </div>
@@ -144,7 +202,7 @@
 
 <footer>
   <div class="wrap">
-    <p>Hecho en México 🇲🇽 · JobButler © 2026 · <a href="/">jobbutler.com.mx</a></p>
+    <p>Hecho en México 🇲🇽 · JobButler © 2026 · <a href="/">jobbutler.com.mx</a> · <a href="/privacidad">Aviso de privacidad</a></p>
   </div>
 </footer>
 
