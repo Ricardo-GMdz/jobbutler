@@ -138,6 +138,19 @@
   .precio li::before{content:"—";color:var(--oro);position:absolute;left:0}
   .fine{font-size:.88rem;opacity:.75;margin-top:16px}
 
+  /* ---- FAQ ---- */
+  section.faq{padding-block:84px}
+  .faq-list{max-width:760px;margin-top:36px}
+  .faq-item{border-bottom:1px solid rgba(201,164,92,.22)}
+  .faq-item summary{
+    cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    font-family:"Marcellus",serif;color:#fff;font-size:1.12rem;padding:18px 0;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";color:var(--oro);font-size:1.3rem;flex:none;transition:transform .2s}
+  .faq-item[open] summary::after{transform:rotate(45deg)}
+  .faq-item p{padding:0 0 20px;font-size:.98rem;max-width:44em}
+
   /* ---- Footer ---- */
   footer{padding:48px 0;border-top:1px solid rgba(201,164,92,.18)}
   .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
@@ -189,6 +202,18 @@
     }
   ]
 }
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿JobButler es una bolsa de trabajo?","acceptedAnswer":{"@type":"Answer","text":"No. Las bolsas de trabajo te dan un buscador y el trabajo lo haces tú. JobButler es un servicio hecho-por-ti: buscamos, filtramos y rankeamos las vacantes contra tu perfil, optimizamos tu CV para cada una y redactamos los mensajes de contacto. Tú decides a cuáles aplicar."}},
+{"@type":"Question","name":"¿Inventan datos en mi CV?","acceptedAnswer":{"@type":"Answer","text":"Jamás. Optimizamos formato, keywords y orden para que tu CV pase los filtros ATS, pero cada dato sale de tu experiencia real. Nada inventado, nada exagerado."}},
+{"@type":"Question","name":"¿Qué recibo exactamente cada lunes?","acceptedAnswer":{"@type":"Answer","text":"Tu charola semanal: vacantes reales rankeadas con puntaje de compatibilidad, el top filtrado por tu salario mínimo, ciudad y modalidad, tu CV optimizado para las mejores vacantes y los mensajes listos para contactar a reclutadores o pedir referidos."}},
+{"@type":"Question","name":"¿Qué pasa justo después de pagar?","acceptedAnswer":{"@type":"Answer","text":"Llenas un formulario de perfil con el puesto que buscas, ciudad, salario mínimo, modalidad y tu CV actual. Con eso preparamos tu primera lista, que llega en un máximo de 48 horas."}},
+{"@type":"Question","name":"¿Cómo me entregan todo?","acceptedAnswer":{"@type":"Answer","text":"En tu tablero personal, con el historial completo de tu búsqueda, y con soporte directo por WhatsApp."}},
+{"@type":"Question","name":"¿Y si consigo empleo o ya no lo necesito?","acceptedAnswer":{"@type":"Answer","text":"Cancelas cuando quieras, sin plazos forzosos ni penalizaciones: basta un mensaje y no se te vuelve a cobrar."}},
+{"@type":"Question","name":"¿Sirve para mi ciudad o mi industria?","acceptedAnswer":{"@type":"Answer","text":"Trabajamos con profesionistas en todo México y filtramos por tu ciudad (o remoto), salario y tipo de rol. Si tu área es muy de nicho, escríbenos antes de unirte y te decimos con honestidad si podemos servirte bien."}},
+{"@type":"Question","name":"¿Quién ve mis datos y mi CV?","acceptedAnswer":{"@type":"Answer","text":"Solo el equipo que prepara tu entrega semanal. Tu perfil se usa únicamente para buscar y rankear vacantes para ti; nunca lo compartimos ni lo vendemos."}}
+]}
 </script>
 <!-- ============ Analytics JobButler ============ -->
 <!-- Google Analytics 4 -->
@@ -352,6 +377,47 @@
     <br>
     <a class="cta" href="https://buy.stripe.com/3cI00jcpn9BX68r1dqcwg00">Empezar hoy</a>
     <p class="fine">¿Dudas antes de unirte? Escríbenos: <a href="mailto:hola@jobbutler.com.mx">hola@jobbutler.com.mx</a></p>
+  </div>
+</section>
+
+<section class="faq" id="preguntas">
+  <div class="wrap">
+    <span class="section-eyebrow">Preguntas frecuentes</span>
+    <h2>Antes de unirte</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿JobButler es una bolsa de trabajo?</summary>
+        <p>No. Las bolsas de trabajo te dan un buscador y el trabajo lo haces tú. JobButler es un servicio hecho-por-ti: nosotros buscamos, filtramos y rankeamos las vacantes contra tu perfil, optimizamos tu CV para cada una y te redactamos los mensajes de contacto. Tú decides a cuáles aplicar.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Inventan datos en mi CV?</summary>
+        <p>Jamás. Es nuestra regla más estricta: optimizamos formato, keywords y orden para que tu CV pase los filtros ATS, pero cada dato sale de tu experiencia real. Nada inventado, nada exagerado.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué recibo exactamente cada lunes?</summary>
+        <p>Tu charola semanal: vacantes reales rankeadas con puntaje de compatibilidad, el top filtrado por tu salario mínimo, ciudad y modalidad, tu CV optimizado para las mejores vacantes y los mensajes listos para contactar a reclutadores o pedir referidos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué pasa justo después de pagar?</summary>
+        <p>Llenas un formulario de perfil (unos minutos): puesto que buscas, ciudad, salario mínimo, modalidad y tu CV actual. Con eso preparamos tu primera lista, que llega en un máximo de 48 horas.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cómo me entregan todo?</summary>
+        <p>En tu tablero personal, con el historial completo de tu búsqueda, y con soporte directo por WhatsApp para ajustar filtros o resolver dudas en el camino.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Y si consigo empleo o ya no lo necesito?</summary>
+        <p>Cancelas cuando quieras, sin plazos forzosos ni penalizaciones: basta un mensaje y no se te vuelve a cobrar. Que canceles porque ya firmaste es el mejor final posible del servicio.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Sirve para mi ciudad o mi industria?</summary>
+        <p>Trabajamos con profesionistas en todo México y filtramos por tu ciudad (o remoto), salario y tipo de rol. Si tu área es muy de nicho, escríbenos antes de unirte y te decimos con honestidad si podemos servirte bien.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Quién ve mis datos y mi CV?</summary>
+        <p>Solo el equipo que prepara tu entrega semanal. Tu perfil se usa únicamente para buscar y rankear vacantes para ti; nunca lo compartimos ni lo vendemos. Los detalles están en nuestro <a href="/privacidad">aviso de privacidad</a>.</p>
+      </details>
+    </div>
   </div>
 </section>
 
